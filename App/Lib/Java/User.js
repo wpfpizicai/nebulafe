@@ -6,7 +6,7 @@ var User = Class(function(){
   var request = require('request');
 
   var API_REQUEST = request.defaults({
-    baseUrl : 'http://123.57.72.114:8080/onlineLearningService-1.0.0-SNAPSHOT/api/1.0/'
+    baseUrl : 'http://' + C('api_host') + ':8080/onlineLearningService-1.0.0-SNAPSHOT/api/1.0/'
   });
 
   function getRequst(url,data){
