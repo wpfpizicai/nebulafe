@@ -4,5 +4,6 @@
  */
 module.exports = [
   [/^login\/?$/, "admin/index/login"],
-  [/^logout\/?$/, "admin/index/logout"]
+  [/^logout\/?$/, "admin/index/logout"],
+  ["user/see/:id", "user/see"]
 ]

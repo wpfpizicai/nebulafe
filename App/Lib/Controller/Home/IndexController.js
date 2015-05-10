@@ -9,26 +9,22 @@ module.exports = Controller("Home/BaseController", function(){
     navLinks : navLinks,
     section : 'home'
   };
-  // D('User').join({
-  //   table : 'user_course',
-  //   join : 'left',
-  //   on : ['id' ,'userid']
-  // }).where({uc.courseid : 2}).select().then(function(data){
-  //   console.log(data)
-  // })
-  // D('User').field('name,title').join('INNER JOIN think_user_course on think_user.id=think_user_course.userid INNER JOIN think_course on think_user_course.courseid=think_course.id and think_course.title="微观经济学"').select().then(function(data){
-  //   console.log(data);
-  // });
 
   return {
     indexAction: function(){
       var self = this;
-      this.assign(extend({
-        courses:courses,
-        title : "首页",
-        userInfo : self.userInfo
-      },c_data))
-      this.display();
+      var userInfo = null;
+      return self.session('userInfo').then(function(value){
+        if (!isEmpty(value)) {
+          userInfo = value;
+        }
+        self.assign(extend({
+          courses:courses,
+          title : "首页",
+          userInfo : userInfo
+        },c_data))
+        self.display();
+      })
     }
   };
 });

@@ -47,6 +47,33 @@ global.getDate = function(date){
 global.getDateTime = function(date){
   return Date.format(date, "yyyy-MM-dd hh:mm:ss");
 }
+
+function toQueryPair(key, value) {
+  if (typeof value == 'undefined') {
+    return key;
+  }
+  return key + '=' + encodeURIComponent(value === null ? '' : String(value));
+}
+
+global.toQueryString = function(obj) {
+  var ret = [];
+  for (var key in obj) {
+    key = encodeURIComponent(key);
+    var values = obj[key];
+    if (values && values.constructor == Array) { //数组
+      var queryValues = [];
+      for (var i = 0, len = values.length, value; i < len; i++) {
+        value = values[i];
+        queryValues.push(toQueryPair(key, value));
+      }
+      ret = ret.concat(queryValues);
+    } else { //字符串
+      ret.push(toQueryPair(key, values));
+    }
+  }
+  return ret.join('&');
+}
+
 global.navLinks =  [
   { label: '首页',    key: 'home',    href: '/' },
   { label: '课程',    key: 'course',    href: '/course' },

@@ -22,11 +22,11 @@ define(function(require, exports, moudle) {
           <input style="display:none;">
         </div>
         <div class="rlf-group">
-          <input  type="password" name="password" data-validate="password" class="ipt ipt-pwd" placeholder="请输入密码"/>
+          <input  type="password" name="password" data-validate="password" class="ipt ipt-pwd" autocomplete="off" placeholder="请输入密码"/>
           <p class="rlf-tip-wrap"><span style="display:none">请输入6-16位密码，区分大小写，不能使用空格</span></p>
         </div>
         <div class="rlf-group">
-          <input  type="password" name="cfmpwd" class="ipt ipt-pwd" placeholder="请再次输入密码"/>
+          <input  type="password" name="cfmpwd" class="ipt ipt-pwd" placeholder="请再次输入密码" autocomplete="off"/>
           <p class="rlf-tip-wrap"><span style="display:none">请再次输入密码</span></p>
         </div>
         <div class="rlf-group">
@@ -58,17 +58,17 @@ define(function(require, exports, moudle) {
         <div class="l-left-wrap l">
           <form id="signup-form" autocomplete="off">
             <div class="rlf-group">
-              <input  type="text" name="email" data-validate="email" autocomplete="off" class="ipt ipt-email" placeholder="请输入登录邮箱"/>
+              <input  type="text" name="email" data-validate="email" class="ipt ipt-email" placeholder="请输入登录邮箱"/>
               <p class="rlf-tip-wrap"></p>
               <input style="display:none;">
             </div>
             <div class="rlf-group">
-              <input  type="password" name="password" autocomplete="off" class="ipt ipt-pwd" placeholder="请输入密码"/>
+              <input  type="password" name="password" class="ipt ipt-pwd" placeholder="请输入密码" autocomplete="off"/>
               <p class="rlf-tip-wrap"></p>
             </div>
             <div class="rlf-group rlf-appendix clearfix">
               <label for="auto-signin" class="l" hidefocus="true"><input type="checkbox" checked="checked" id="auto-signin">自动登录</label>
-              <a href="/user/newforgot" class="rlf-forget r" target="_blank" hidefocus="true">忘记密码 </a>
+              <a href="/user/forget" class="rlf-forget r" target="_blank" hidefocus="true">忘记密码 </a>
             </div>
             <div class="rlf-group clearfix">
               <p class="rlf-tip-wrap " id="signin-globle-error"></p>
@@ -149,25 +149,25 @@ define(function(require, exports, moudle) {
               success:function(vals){
                 var remember=$("#auto-signin")[0].checked?"1":"0";
                 $.ajax({
-                  url:"/user/signin",
+                  url:"/user/login",
                   data:{
-                    email:vals.email,
-                    pwd:vals.password,
+                    username:vals.email,
+                    password:vals.password,
                     remember:remember
                   },
-                  method:"post",
+                  type :"post",
                   dataType:"json",
                   success:function(data){
-                    // if(data.status===1){
-                    //   fireLogined(data.data.userInfo);
-                    //   return ;
-                    // }
-                    // else if(data.status==5){
-                    //   window.location.href="/user/userfrozen";
-                    //   return ;
-                    // }
+                    if(data.errno===0){
+                      window.location.reload();
+                      return ;
+                    }
+                    else {
+                       $("#signin-globle-error").addClass("rlf-tip-error").html(data.errmsg);
+                      return ;
+                    }
                     // $("#signin-globle-error").addClass("rlf-tip-error").html(data.msg);
-                    //$("#signin-btn").button("reset");
+                    window.location.reload();
                   },
                   error:function(){
                     $("#signin-globle-error").addClass("rlf-tip-error").html("服务错误，稍后重试");
@@ -206,11 +206,12 @@ define(function(require, exports, moudle) {
                   rule:function(cb,v){
                     return $.ajax({
                       url:"/user/checkemail",
-                      method:"post",
-                      data:{email:v},
+                      type:"post",
+                      data:{username:v},
                       dataType:"json",
                       success:function(data){
-                        if(data.status==1){
+                        var data = data.data;
+                        if(data.num==0){
                           cb();
                         }
                         else{
@@ -306,17 +307,17 @@ define(function(require, exports, moudle) {
             $this.closest("form").validate({
               success:function(vals){
                 $.ajax({
-                  url:"/user/signup",
+                  url:"/user/signin",
                   data:{
                     username:vals.email,
                     password:vals.password,
                     nickname:vals.nick
                   },
-                  method:"post",
+                  type:"post",
                   dataType:"json",
                   success:function(data){
-                    if(data.status===0){
-                      fireLogined(data.data.userInfo,true);
+                    if(data.errno===0){
+                      window.location.reload();
                       return ;
                     }
                     $("#signup-globle-error").addClass("rlf-tip-error").html(data.msg);
@@ -351,6 +352,12 @@ define(function(require, exports, moudle) {
       $("#"+d[0]).modal("hide");
       d[1]&&m[d[1]]();
     });
+    $('#signin_btn').on('click',function(e){
+      m.signin();
+    })
+    $('#signup_btn').on('click',function(e){
+      m.signup();
+    })
   });
 
   moudle.exports = m;

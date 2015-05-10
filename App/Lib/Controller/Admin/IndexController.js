@@ -2,7 +2,7 @@
  * controller
  * @return
  */
-module.exports = Controller("Home/BaseController", function() {
+module.exports = Controller("Admin/BaseController", function() {
   "use strict";
   return {
     loginAction: function() {

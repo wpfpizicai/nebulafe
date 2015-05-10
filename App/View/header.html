@@ -17,11 +17,11 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <%if(userInfo){%>
-            <li><a id="signin_user" href="javascript:void(0);"><%= userInfo.name %></a></li>
+            <li><a id="signin_user" href="/user/see/<%= userInfo.id %>"><%= userInfo.username %></a></li>
             <li><a id="logout_btn" href="/user/logout">退出</a></li>
           <% } else { %>
-            <li><a id="signin_btn" href="/user/signin">登录</a></li>
-            <li><a id="signup_btn" href="/user/signup">注册</a></li>
+            <li><a id="signin_btn">登录</a></li>
+            <li><a id="signup_btn">注册</a></li>
           <%}%>
         </ul>
       </div>
