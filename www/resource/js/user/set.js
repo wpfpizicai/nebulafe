@@ -34,7 +34,10 @@ define(function(require, exports, moudle) {
       dataType:"json",
       success:function(data){
           if(data.errno===0){
-            $('#js-g-forgot-error').html("设置成功！")
+            $('.mmsg-box').show();
+            setTimeout(function(){
+              $('.mmsg-box').animate({opacity:0}).hide().css({opacity:1})
+            },2000)
           }else{
             forgotMsg(data.errmsg||"");
           }
