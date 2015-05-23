@@ -1,10 +1,87 @@
 <!Doctype html>
 <html>
-<head>
-  <%- include ../meta.html %>
-</head>
-<body>
-  <%- include ../header.html %>
-  <%- include ../footer.html %>
-</body>
+  <head>
+    <%- include ../meta.html %>
+  </head>
+  <body>
+    <%- include ../header.html %>
+    <div class="container">
+      <div class="col-md-12 serach-course">
+      <div class="col-md-6 col-xs-9">
+        <div class="form-group">
+          <input type="text" placeholder="搜索一门课程"  class="form-control">
+        </div>
+      </div>
+      <div class="col-md-3 col-xs-3 text-left">
+        <button type="button" class="btn btn-primary">搜索</button>
+      </div>
+      </div>
+      <div class="container">
+        <div class="col-md-2">
+          <ul>
+            <li data-value="" class="bt3-row">
+              <input id="categories_all" type="checkbox"  checked="checked">
+              <label for="categories_all">所有类别</label>
+            </li>
+            <li data-value="arts" class="bt3-row">
+              <input id="categories_arts" type="checkbox">
+              <label for="categories_arts">艺术</label>
+            </li>
+            <li data-value="biology" class="bt3-row">
+              <input id="categories_biology" type="checkbox">
+              <label for="categories_biology">生命科学</label>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-10">
+          <h3>课程</h3>
+          <div class="courses">
+            <div class="course-item">
+              <div class="col-md-2 col-xs-3">
+                <img src="/resource/img/DataScientistsToolbox.jpg" width="120" height="68">
+              </div>
+              <div class="col-md-7 col-xs-6">
+                <div class="c-partner">霍普金斯大学</div>
+                <div class="c-title"><a href="/course/view">数据科学家的工具箱（中文版）</a></div>
+                <div class="c-teacher">授课教师 Jeff Leek, PhD, Roger D. Peng, PhD & Brian Caffo, PhD</div>
+              </div>
+              <div class="col-xs-3 text-right">
+                <p>6月 1日, 2015<br>4 个星期</p>
+                <button class="btn btn-info">认证&nbsp;证书</button>
+              </div>
+            </div>
+            <div class="course-item">
+              <div class="col-md-2 col-xs-3">
+                <img src="/resource/img/DataScientistsToolbox.jpg" width="120" height="68">
+              </div>
+              <div class="col-md-7 col-xs-6">
+                <div class="c-partner">霍普金斯大学</div>
+                <div class="c-title"><a href="/course/view">数据科学家的工具箱（中文版）</a></div>
+                <div class="c-teacher">授课教师 Jeff Leek, PhD, Roger D. Peng, PhD & Brian Caffo, PhD</div>
+              </div>
+              <div class="col-xs-3 text-right">
+                <p>6月 1日, 2015<br>4 个星期</p>
+                <button class="btn btn-info">认证&nbsp;证书</button>
+              </div>
+            </div>
+            <div class="course-item">
+              <div class="col-md-2 col-xs-3">
+                <img src="/resource/img/DataScientistsToolbox.jpg" width="120" height="68">
+              </div>
+              <div class="col-md-7 col-xs-6">
+                <div class="c-partner">霍普金斯大学</div>
+                <div class="c-title"><a href="/course/view">数据科学家的工具箱（中文版）</a></div>
+                <div class="c-teacher">授课教师 Jeff Leek, PhD, Roger D. Peng, PhD & Brian Caffo, PhD</div>
+              </div>
+              <div class="col-xs-3 text-right">
+                <p>6月 1日, 2015<br>4 个星期</p>
+                <button class="btn btn-info">认证&nbsp;证书</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include ../footer.html %>
+  </body>
 </html>

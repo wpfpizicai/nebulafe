@@ -14,7 +14,7 @@ module.exports = Controller(function(){
       if (self.http.action != "login") {
         return this.session("userInfo").then(function(value){
           self.userInfo = value;
-          self.assign('userInfo', value);
+          //self.assign('userInfo', value);
         })
       };
     }

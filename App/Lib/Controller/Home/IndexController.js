@@ -9,6 +9,8 @@ module.exports = Controller("Home/BaseController", function(){
     navLinks : navLinks,
     section : 'home'
   };
+  var Dplus = require('dplus');
+  var dplus = Dplus.init("d6158b985d9cbf6b251b");
 
   return {
     indexAction: function(){
@@ -18,6 +20,7 @@ module.exports = Controller("Home/BaseController", function(){
         if (!isEmpty(value)) {
           userInfo = value;
         }
+        dplus.track("首页登录",{distinct_id:"sshdhhdhshd"});
         self.assign(extend({
           courses:courses,
           title : "首页",

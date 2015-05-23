@@ -7,6 +7,8 @@ module.exports = Controller("Home/BaseController", function(){
   var User = require("../../Java/User");
   var captchapng = require('captchapng');
   var captchacode = "";
+  var Dplus = require('dplus');
+  var dplus = Dplus.init("d6158b985d9cbf6b251b");
   return {
     updateAction: function(){
       var self = this;
@@ -40,6 +42,7 @@ module.exports = Controller("Home/BaseController", function(){
     logoutAction: function() {
       var self = this;
       if(self.isGet()){
+        dplus.track("logoutAction",{distinct_id:"yuheng.wpf@163.com"})
         self.session('userInfo', '');
         self.redirect('/');
       }
@@ -57,10 +60,12 @@ module.exports = Controller("Home/BaseController", function(){
         User.createUser(data).then(function(content){
           if(isNumber(content)){
             if(content == -1){
+              dplus.track("signinAction",{distinct_id:data.username,status:"已存在"})
               throw new Error("用户已经存在！")
             }else if(content == -2){
               throw new Error("系统异常，请稍后再试！")
             }else{
+              dplus.track("signinAction",{distinct_id:data.username,status:"注册成功"})
               self.session('userInfo',extend({},data,{id:content}))
               return self.success(content);
             }

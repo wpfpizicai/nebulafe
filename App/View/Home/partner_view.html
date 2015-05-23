@@ -1,0 +1,43 @@
+<!Doctype html>
+<html>
+<head>
+  <%- include ../meta.html %>
+</head>
+<body>
+  <%- include ../header.html %>
+  <div class="partner">
+    <div class="p-bg">
+      <div class="p-bg-banner"></div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="p-preview">
+      <div class="p-logo">
+        <img src="/resource/img/square.png" alt="" width="180" height="180">
+      </div>
+      <div class="p-summary">
+        <h3>爱丁堡大学</h3>
+        <p>Delivering excellence in teaching and learning. Consistently ranked as one of the world's top 50 universities and top 3 UK provider of online Masters courses. The University of Edinburgh offers over 700 diverse degree programmes with over 31,000 students currently studying with us from across the world.</p>
+      </div>
+    </div>
+    <div class="p-courese ad-courses">
+      <div class="row">
+      <%courses.forEach(function(val){%>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <a href="/course/view?id=10" target="_blank">
+            <span class="course-img">
+              <img src="/resource/img/k/<%= val.img %>" alt="<%= val.name %>">
+            </span>
+            <em><%= val.name %></em>
+          </a>
+          <p><%= val.source %>" • "<%= val.time %></p>
+        </div>
+      </div>
+      <%})%>
+    </div>
+    </div>
+  </div>
+  <%- include ../footer.html %>
+</body>
+</html>

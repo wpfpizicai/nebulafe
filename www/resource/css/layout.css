@@ -278,3 +278,93 @@ img.a-logo{
 .online-bm{
   display: none;
 }
+/*course*/
+.container .serach-course{
+  margin: 20px 15px;
+}
+.container .courses{
+  border-bottom: 1px solid #CCC;
+  margin-bottom: 20px;
+}
+.container .course-item{
+  padding: 15px 0;
+  border:1px solid #CCC;
+  border-width: 1px 1px 0 1px;
+  overflow: hidden;
+}
+/* partner-view */
+.partner .p-bg {
+  width: 100%;
+  background-color: #000;
+  height: 320px;
+  position: relative;
+}
+.partner .p-bg .p-bg-banner{
+  background-image: url("../img/new-uoe-coursera-banner.jpg.jpg");
+  width: 1280px;
+  height: 100%;
+  max-height: 320px;
+  position: relative;
+  -webkit-box-shadow: inset 50px 0 120px -20px #000,inset 50px 0 120px -40px #000,inset -50px 0 120px -20px #000,inset -50px 0 120px -40px #000,inset 0 10px 10px -10px #000,inset 0 -10px 10px -10px #000;
+  box-shadow: inset 50px 0 120px -20px #000,inset 50px 0 120px -40px #000,inset -50px 0 120px -20px #000,inset -50px 0 120px -40px #000,inset 0 10px 10px -10px #000,inset 0 -10px 10px -10px #000;
+  margin: 0 auto;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.container .p-preview{
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 24px;
+  position: relative;
+  top: -60px;
+  margin-bottom: -48px;
+}
+.p-preview .p-logo, .p-preview .p-summary{
+  display: inline-block;
+}
+.p-preview .p-logo{
+  position: relative;
+  margin-left: 1px
+}
+.p-preview .p-summary{
+  margin-left: 200px;
+  padding-top: 33px;
+}
+.p-preview .p-logo img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 180px;
+  max-width: 180px;
+  min-width: 180px;
+  border: 4px solid #fff;
+  -webkit-box-shadow: 0 0 2px 0 #808080;
+  box-shadow: 0 0 2px 0 #808080;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #fff;
+}
+/*partner_index*/
+.p-title{
+  padding: 40px 0 ;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #CCC;
+}
+.p-item{
+  height: 200px;
+  display: block;
+}
+.p-item .p-logo img{
+  -webkit-border-radius: 120px;
+  border-radius: 120px;
+  border: 2px solid #eee;
+}
+.p-item .p-name{
+  height: 20px;
+  line-height: 20px;
+  width: 120px;
+}
