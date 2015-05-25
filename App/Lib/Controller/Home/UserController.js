@@ -4,7 +4,7 @@
  */
 module.exports = Controller("Home/BaseController", function(){
   "use strict";
-  var User = require("../../Java/User");
+  var Service = require("../../Service/Service");
   var captchapng = require('captchapng');
   var captchacode = "";
   return {
@@ -17,7 +17,7 @@ module.exports = Controller("Home/BaseController", function(){
         return self.session('userInfo').then(function(value){
           if (!isEmpty(value)) {
             if(value.id == user_id){
-              return User.updateUserById(self.post()).then(function(content){
+              return Service.updateUserById(self.post()).then(function(content){
                 if(content == 0){
                   return self.success()
                 }else if(content == -1){
@@ -54,7 +54,7 @@ module.exports = Controller("Home/BaseController", function(){
         if(!data.username || !data.password){
           return self.error("请输入正确的用户名和密码")
         }
-        User.createUser(data).then(function(content){
+        Service.createUser(data).then(function(content){
           if(isNumber(content)){
             if(content == -1){
               throw new Error("用户已经存在！")
@@ -82,7 +82,7 @@ module.exports = Controller("Home/BaseController", function(){
         if(!data.username || !data.password){
           return self.err("请输入正确的用户名和密码")
         }
-        User.loginUser(data).then(function(content){
+        Service.loginUser(data).then(function(content){
           if(isNumber(content)){
             if(content == -1){
               throw new Error("没有找到该用户！")
@@ -103,7 +103,7 @@ module.exports = Controller("Home/BaseController", function(){
 
     checkemailAction: function(){
       var self = this;
-      User.checkEmail({"username" : this.param('username')}).then(function(content){
+      Service.checkEmail({"username" : this.param('username')}).then(function(content){
         if(content == 0){
           return self.success({num : content})
         }else if(content == 1){
@@ -143,7 +143,7 @@ module.exports = Controller("Home/BaseController", function(){
         return self.session('userInfo').then(function(value){
           if (!isEmpty(value)) {
             if(value.id == user_id){
-              return User.getUserById({id:user_id}).then(function(content){
+              return Service.getUserById({id:user_id}).then(function(content){
                 self.assign({
                   title : "查看用户",
                   section : 'user',

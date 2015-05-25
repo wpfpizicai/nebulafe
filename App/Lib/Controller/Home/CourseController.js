@@ -4,16 +4,40 @@
  */
 module.exports = Controller("Home/BaseController", function(){
   "use strict";
+  var Service = require("../../Service/Service");
   return {
     indexAction: function(){
       var self = this;
-      this.assign({
-        section : 'course',
-        userInfo : self.userInfo,
-        navLinks : navLinks,
-        title : "课程"
-      });
-      this.display();
+      Service.getAllCourses({_returntype : "detail"}).then(function(data){
+        self.assign({
+          courses : data,
+          section : 'course',
+          userInfo : self.userInfo,
+          navLinks : navLinks,
+          title : "课程"
+        });
+        self.display();
+      })
+    },
+
+    tagAction : function(){
+      var self = this;
+      Service.getCoursesByTag({
+        type : "detail",
+        tag : self.post("tag")
+      }).then(function(data){
+        self.success(data)
+      })
+    },
+
+    searchAction : function(){
+      var self = this;
+      Service.searchCourses({
+        type : "detail",
+        wd : self.post('wd')
+      }).then(function(data){
+        self.success(data)
+      })
     },
 
     viewAction: function(){

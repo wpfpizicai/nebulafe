@@ -279,6 +279,9 @@ img.a-logo{
   display: none;
 }
 /*course*/
+.course-tags li{
+  list-style: none;
+}
 .container .serach-course{
   margin: 20px 15px;
 }
