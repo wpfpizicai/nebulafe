@@ -8,7 +8,7 @@ module.exports = Controller("Home/BaseController", function(){
   return {
     indexAction: function(){
       var self = this;
-      Service.getAllCourses({_returntype : "detail"}).then(function(data){
+      Service.getAllCourses().then(function(data){
         self.assign({
           courses : data,
           section : 'course',
@@ -23,7 +23,6 @@ module.exports = Controller("Home/BaseController", function(){
     tagAction : function(){
       var self = this;
       Service.getCoursesByTag({
-        type : "detail",
         tag : self.post("tag")
       }).then(function(data){
         self.success(data)
@@ -33,7 +32,6 @@ module.exports = Controller("Home/BaseController", function(){
     searchAction : function(){
       var self = this;
       Service.searchCourses({
-        type : "detail",
         wd : self.post('wd')
       }).then(function(data){
         self.success(data)

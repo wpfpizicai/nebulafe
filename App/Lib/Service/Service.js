@@ -28,29 +28,28 @@ var Service = Class(function(){
   return {
     /*Course API*/
     getAllCourses : function(data){
-      return getRequst('course/retrieve',data);
+      return getRequst('course/retrieve', extend({_returntype : "detail"}, data));
     },
 
     getCoursesByTag : function(data){
-      return getRequst('course/retrieve' ,data);
+      return getRequst('course/retrieve', extend({_returntype : "detail"}, data));
     },
 
     searchCourses : function(data){
-      return getRequst('course/search' , data);
+      return getRequst('course/search' , extend({_returntype : "detail"}, data));
     },
 
     /*Partner API*/
-    {
     getAllPartners : function(data){
-      return getRequst('partner/retrieve', $.extend({_returntype:'detail'}, data));
+      return getRequst('partner/retrieve', extend({_returntype:'detail'}, data));
     },
 
-    getPartnerById : function(id){
-      return getRequst('partner/retrieve', $.extend({_returntype:'detail'}, {id : id}));
+    getPartnerById : function(data){
+      return getRequst('partner/retrieve', extend({_returntype:'detail'}, data));
     },
 
     getCoursesByPartnerId : function(data){
-      return getRequst('course/retrieve', $.extend({_returntype:'detail'}, data))
+      return getRequst('course/retrieve', extend({_returntype:'detail'}, data))
     },
 
     /*User API*/
