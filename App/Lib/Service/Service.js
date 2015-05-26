@@ -31,8 +31,16 @@ var Service = Class(function(){
       return getRequst('course/retrieve', extend({_returntype : "detail"}, data));
     },
 
+    getCourseById : function(data){
+      return getRequst('course/retrieve',  extend({_returntype : "detail"}, data));
+    },
+
     getCoursesByTag : function(data){
       return getRequst('course/retrieve', extend({_returntype : "detail"}, data));
+    },
+
+    getCoursesByPartnerId : function(data){
+      return getRequst('course/retrieve', extend({_returntype:'detail'}, data))
     },
 
     searchCourses : function(data){
@@ -46,10 +54,6 @@ var Service = Class(function(){
 
     getPartnerById : function(data){
       return getRequst('partner/retrieve', extend({_returntype:'detail'}, data));
-    },
-
-    getCoursesByPartnerId : function(data){
-      return getRequst('course/retrieve', extend({_returntype:'detail'}, data))
     },
 
     /*User API*/
@@ -71,6 +75,14 @@ var Service = Class(function(){
 
     updateUserById : function(data){
       return getRequst('user/update', data)
+    },
+
+    sendEmail : function(data){
+      return getRequst('user/sendtextmail', data)
+    },
+
+    resetPwd : function(data){
+      return getRequst('user/resetpassword' ,data)
     }
   }
 })

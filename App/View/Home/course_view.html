@@ -5,14 +5,15 @@
 </head>
 <body>
   <%- include ../header.html %>
+  <% var course = course[0]%>
   <div class="container">
     <div class="c-course">
       <div class="row">
         <div class="col-sm-12 col-md-6">
           <a href="/jhu" class="c-partner-logo"><img src="/resource/img/p/bloomberg.small.png" alt="Johns Hopkins University"></a>
-          <h1>统计推断</h1>
+          <h1><%=course.name%></h1>
           <h3>隶属于&nbsp;<a href="/specialization/jhudatascience/1?utm_medium=courseDescripTop">数据科学 专项课程 »</a></h3>
-          <p>Learn how to draw conclusions about populations or scientific truths from data. This is the  sixth course in the Johns Hopkins Data Science Course Track.</p>
+          <p><%=course.introduction%></p>
         </div>
         <div class="col-sm-12 col-md-6">
             <div class="c-vedio-container">
@@ -27,36 +28,13 @@
       <div class="row">
         <div class="col-sm-12 col-md-12">
           <h2>课程概述</h2>
-          <p>Statistical inference is the process of drawing conclusions about populations or scientific truths from data. There are many modes of performing inference including statistical modeling, data oriented strategies and explicit use of designs and randomization in analyses. Furthermore, there are broad theories (frequentists, Bayesian, likelihood, design based, …) and numerous complexities (missing data, observed and unobserved confounding, biases) for performing inference. A practitioner can often be left in a debilitating maze of techniques, philosophies and nuance. This course presents the fundamentals of inference in a practical approach for getting things done. After taking this course, students will understand the broad directions of statistical inference and use this information for making informed choices in analyzing data.</p>
+          <p><%=course.description%></p>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-12 col-md-12">
           <h2>授课大纲</h2>
-          <p><b>第1周： 绪论:软件开发方法的演化与最新趋势</b>
-            <br>介绍贯穿于课程始终的基本概念：系统、模型、方法学、方法、语言等，回顾软件开发方法学的历史、现状，并展望未来
-            <br><b>第2周： 面向对象技术概论
-            </b><br>讲述面向对象方法学中的原则与发展历史以及问题
-            <br><b>第3周：面向对象分析与设计引例（空战游戏）
-            </b><br>以一个完整的案例示范完整的面向对象的需求分析、系统分析和系统设计的过程和模型。
-            <br><b>第4周：面向对象的需求分析：Usecace图
-            </b><br>介绍面向对象需求分析模型的语义与建立过程，示例，并讨论其中的深入话题
-            <br><b>第5周：面向对象的系统分析：类图
-            </b><br>介绍类图的语义与建立过程，示例，并讨论其中的深入话题
-            <br><b>第6周：面向对象的系统分析：交互图</b>
-            <br>介绍交互图的语义与建立过程，示例，并讨论其中的深入话题
-            <br><b>第7周：面向对象的系统分析：状态图
-            </b><br>介绍状态图的语义与建立过程，示例，并讨论其中的深入话题
-            <br><b>第8周：面向对象的系统设计：概述与问题域部分的设计
-            </b><br>介绍面向对象设计的范围界定、概要与组成部分，以及其中问题域部分的设计方法与策略
-            <br><b>第9周：面向对象的系统设计：控制驱动部分的设计
-            </b><br>介绍控制驱动部分的设计方法与策略与案例
-            <br><b>第10周：面向对象的系统设计：人机交互部分与数据管理部分的设计
-            </b><br>介绍人机交互部分与数据管理部分的设计方法与策略与案例
-            <br><b>第11周：面向对象的系统设计：构件与部署的设计
-            </b><br>介绍构件与部署分与数据管理部分的设计方法与策略与案例
-            <br><b>第12周：面向对象分析与设计完整案例
-            </b><br>介绍各种类型的面向对象分析与设计完整案例</p>
+          <p><%=course.outline%></p>
         </div>
       </div>
       <div class="row">

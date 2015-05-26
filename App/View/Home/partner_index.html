@@ -7,11 +7,10 @@
   <%- include ../header.html %>
   <div class="container">
     <h1 class="p-title text-center">我们的合作伙伴</h1>
-    <img src="http://finace-english.oss-cn-beijing.aliyuncs.com/01/%E5%9B%BE%E7%89%871.gif" alt="" width="20" height="20">
     <div class="row">
     <%partners.forEach(function(val){%>
       <div class="col-md-2 col-xs-6">
-        <a href="/partner/view" class="p-item">
+        <a href="/partner/view/<%=val.id%>" class="p-item">
           <div class="p-logo">
             <img src="/resource/img/h/<%= val.img%>" alt="<%= val.name%>" width="120" height="120">
           </div>

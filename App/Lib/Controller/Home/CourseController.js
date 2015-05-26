@@ -39,15 +39,23 @@ module.exports = Controller("Home/BaseController", function(){
     },
 
     viewAction: function(){
-      var id = this.get('id') | 0,
-        self = this;
-      this.assign({
-        title: "课程" + id,
-        navLinks : navLinks,
-        userInfo : self.userInfo,
-        section : 'course'
-      });
-      this.display();
+      var self = this;
+      if(self.isGet()){
+        var course_id = self.get('id');
+        if(!course_id){
+          return self.redirect("/course");
+        }else{
+          var course = Service.getCourseById({id : course_id});
+          self.assign({
+            title: "课程",
+            course : course,
+            navLinks : navLinks,
+            userInfo : self.userInfo,
+            section : 'course'
+          });
+          self.display();
+        }
+      }
     }
   };
 })

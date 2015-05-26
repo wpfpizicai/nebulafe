@@ -6,7 +6,22 @@ module.exports = Controller("Home/BaseController", function(){
   "use strict";
   var Service = require("../../Service/Service");
   var captchapng = require('captchapng');
-  var captchacode = "";
+  var crypto = require('crypto');
+  var secret = "ahshsd123";
+  //加密
+  function encrypt(str) {
+      var cipher = crypto.createCipher('aes192', secret);
+      var enc = cipher.update(str, 'utf8', 'hex');
+      enc += cipher.final('hex');
+      return enc;
+  }
+  //解密
+  function decrypt(str) {
+      var decipher = crypto.createDecipher('aes192', secret);
+      var dec = decipher.update(str, 'hex', 'utf8');
+      dec += decipher.final('utf8');
+      return dec;
+  }
   return {
     updateAction: function(){
       var self = this;
@@ -125,11 +140,18 @@ module.exports = Controller("Home/BaseController", function(){
         return self.display()
       }else if(self.isPost()){
         var data = self.post();
-        if(data.verifycode == captchacode){
-          return self.success();
-        }else{
-          return self.error("验证码错误！");
-        }
+        self.session('captchacode').then(function(res){
+          if(data.verifycode == res){
+            Service.sendEmail({
+              email: data.email,
+              subject : "找回密码",
+              message : "http://localhost:8361/user/reset/?verify=" + encrypt(data.email)
+            })
+            return self.success();
+          }else{
+            self.error("验证码错误！");
+          }
+        })
       }
     },
 
@@ -164,9 +186,43 @@ module.exports = Controller("Home/BaseController", function(){
       }
     },
 
+    resetAction: function(){
+      var self = this;
+      if(self.isGet()){
+        var id = self.get('verify');
+        if(!id){
+          self.redirect("/")
+        }else{
+          try{
+            var email = decrypt(id);
+            if(!isEmail(email)){
+              self.redirect("/")
+            }
+            self.assign({
+              title : "重置密码",
+              section : 'user',
+              userInfo : self.userInfo,
+              email: email
+            });
+            self.display()
+          }catch(e){
+            return self.redirect("/")
+          }
+        }
+      }else if(self.isPost()){
+        var data = self.post();
+        Service.resetPwd(data).then(function(res){
+          self.success(res)
+        }).catch(function(e){
+          self.error("系统异常，请稍后再试！");
+        })
+      }
+    },
+
     getcodeAction: function(){
       var self = this;
-      captchacode = parseInt(Math.random()*9000+1000);
+      var captchacode = parseInt(Math.random()*9000+1000);
+      self.session('captchacode', captchacode);
       var p = new captchapng(70,38,captchacode);
       p.color(0, 12, 0, 0);
       p.color(80, 80, 200, 255);

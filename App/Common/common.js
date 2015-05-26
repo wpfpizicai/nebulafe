@@ -31,6 +31,14 @@ Date.format = function (date, pattern) {
   }
   return pattern;
 }
+
+global.isEmail = function(str){
+  var r=/^[a-zA-Z0-9]+([._\-][a-zA-Z0-9]+)*@([a-zA-Z0-9]+([._\-][a-zA-Z0-9]+))+$/;
+  if(!str.length){
+      return false;
+  }
+  return r.test(str)
+}
 /**
  * 获取日期
  * @param  {[type]} date [description]
