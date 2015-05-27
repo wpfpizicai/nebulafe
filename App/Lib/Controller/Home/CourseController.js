@@ -56,6 +56,20 @@ module.exports = Controller("Home/BaseController", function(){
           self.display();
         }
       }
+    },
+
+    videoAction : function(){
+      var self = this;
+      if(self.isGet()){
+        self.assign({
+          title : "课程视频",
+          course : {name : "微观经济学"},
+          navLinks : navLinks,
+          userInfo : self.userInfo,
+          section : 'course'
+        })
+        self.display();
+      }
     }
   };
 })

@@ -2,7 +2,7 @@
 <html>
 <head>
   <%- include ../meta.html %>
-  <link href="//vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
+  <link href="/resource/css/video.css" rel="stylesheet">
 </head>
 <body>
   <%- include ../header.html %>
@@ -36,7 +36,7 @@
       <div class="row">
         <div class="col-sm-12 col-md-12">
           <h2>授课大纲</h2>
-          <p><%=course.outline%></p>
+          <p><%-course.outline%></p>
         </div>
       </div>
       <div class="row">
@@ -100,8 +100,11 @@
         </div>
       </div>
     </div>
+    <div id="video_container"></div>
   </div>
   <%- include ../footer.html %>
-  <script src="//vjs.zencdn.net/4.12/video.js"></script>
+  <script>seajs.use('js/widget/jquery.plugin.js')</script>
+  <script>seajs.use('js/widget/jquery.video.js')</script>
+  <script>seajs.use('js/course/view.js')</script>
 </body>
 </html>
