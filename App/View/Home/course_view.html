@@ -6,15 +6,15 @@
 </head>
 <body>
   <%- include ../header.html %>
-  <% var course = course[0]%>
+  <% var partner = partner[0]%>
   <div class="container">
     <div class="c-course">
       <div class="row">
         <div class="col-sm-12 col-md-6">
-          <a href="/jhu" class="c-partner-logo"><img src="/resource/img/p/bloomberg.small.png" alt="Johns Hopkins University"></a>
+          <a href="/partner/view/<%=partner.id%>" class="c-partner-logo"><img src="/resource/img/h_long/<%=partner.small_img%>" alt="<%=partner.name%>"></a>
           <h1><%=course.name%></h1>
           <a class="btn btn-success" href="/course/video?id=<%=course.id%>">进入学习</a>
-          <h3>隶属于&nbsp;<a href="/specialization/jhudatascience/1?utm_medium=courseDescripTop">数据科学 专项课程 »</a></h3>
+          <h3>隶属于&nbsp;<a><%=course.tag%></a></h3>
           <p><%=course.introduction%></p>
         </div>
         <div class="col-sm-12 col-md-6">
@@ -42,26 +42,23 @@
       <div class="row">
         <div class="col-sm-12 col-md-12">
           <h2>先修知识</h2>
-          <p>面向广大软件开发爱好者，并不局限专业与学历层次。最佳选课者为计算机科学和软件工程专业的大学生和硕士研究生。选课者最好具有一门面向对象的编程语言的基本知识和软件工程的基本知识。</p>
+          <p><%=course.prelearn%></p>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-12 col-md-12 reffernce">
           <h2>参考资料</h2>
           <p data-user-generated="data-user-generated"></p>
-          <div>邵维忠、杨芙清，面向对象的分析与设计，清华大学出版社，2013</div>
-          <div>麻志毅、邵维忠，面向对象方法基本教程， 高等教育出版社，2004</div>
-          <div>Martin Fowler著，徐家福译，UML精粹（第3版）清华大学出版社， 2005</div>
-          <div>Grady Booch等著，邵维忠等译， UML用户指南（第2版 ）人民邮电出版社， 2006</div>
-          <div>Joshua Kerievsky著， 杨光等译 重构与模式 人民邮电出版社， 2013.1</div>
-          <div>Martin Fowler著，陈师(注释)，&nbsp;Analysis Patterns: Reusable Object Models ，人民邮电出版社，2007<br> </div><p></p>
+          <%course.reference.split("|").forEach(function(val){%>
+          <div><%=val%></div>
+          <%})%>
+          <p></p>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-12 col-md-12">
           <h2>常见问题</h2>
-          <ul><li>成功完成课程学习后我会得到证书吗？<br></li></ul>
-          <div class="answer">是的，达到要求后将得到北京大学授权主讲教师签署的完成课程学习的证书。<br></div>
+          <%=course.faq%>
         </div>
       </div>
       <hr class="c-course-divider">
@@ -69,33 +66,17 @@
         <div class="col-sm-12 col-md-12">
           <h2>教授</h2>
           <div class="course-teacher">
+          <%teachers.forEach(function(teacher){%>
             <div class="col-sm-6 col-md-4">
-               <a href="" class="teacher-pic"><img src="http://img.mukewang.com/user/54bf46160001222c02200220-80-80.jpg" width="80" height="80"></a>
+               <a href="" class="teacher-pic"><img src="/resource/img/t/<%=teacher.img%>" width="80" height="114"></a>
                 <h3>
-                  <a href="/space/teacher/id/1201036">Doving</a>
+                  <a><%=teacher.name%></a>
                 </h3>
-                <p> Web前端工程师</p>
+                <p> <%=teacher.career%></p>
                 <br class="clear">
-               <div class="discrip autowrap">前端从业者，前端技术控。乐于研究前端新技术和学习新知识，包括前端构建工具，框架，HTML5和CSS3等知识技术。拥有多款独立App作品；对一切可编程的东西有浓厚兴趣，对游戏编程格外感兴趣。相信编程改变一切</div>
+               <div class="discrip autowrap"><%=teacher.description%></div>
             </div>
-            <div class="col-sm-6 col-md-4">
-               <a href="" class="teacher-pic"><img src="http://img.mukewang.com/user/5347593e00010cfb01400140-80-80.jpg" width="80" height="80"></a>
-                <h3>
-                  <a href="/space/teacher/id/1201036">liuluobo</a>
-                </h3>
-                <p> DBA</p>
-                <br class="clear">
-               <div class="discrip">创业者，全栈工程师，持续学习者。对技术开发，产品设计、前后端，ios，html5，智能算法等领域均有接触；拥有多款独立App作品；对一切可编程的东西有浓厚兴趣，对游戏编程格外感兴趣。相信编程改变一切。</div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-               <a href="" class="teacher-pic"><img src="http://img.mukewang.com/user/52610a460001972707820900-80-80.jpg" width="80" height="80"></a>
-                <h3>
-                  <a href="/space/teacher/id/1201036">Murphy</a>
-                </h3>
-                <p> 移动开发工程师</p>
-                <br class="clear">
-               <div class="discrip">腾讯开放平台高级工程师 Web技术大牛 10年风雨开发路 腾讯学院讲师 沙龙论坛演讲大V T恤男 儒雅先生 精通C#、ASP．NET和SQL Server等 负责开发“QQ概念版”、“Q+”、“影视中心”、“QQ互联”等产品 </div>
-            </div>
+            <%})%>
           </div>
         </div>
       </div>

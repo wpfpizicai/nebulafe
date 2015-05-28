@@ -5,6 +5,7 @@
 </head>
 <body>
   <%- include ../header.html %>
+  <% var partner = partner[0]%>
   <div class="partner">
     <div class="p-bg">
       <div class="p-bg-banner"></div>
@@ -13,11 +14,11 @@
   <div class="container">
     <div class="p-preview">
       <div class="p-logo">
-        <img src="/resource/img/square.png" alt="" width="180" height="180">
+        <img src="/resource/img/h_180/<%=partner.img%>" alt="" width="180" height="180">
       </div>
       <div class="p-summary">
-        <h3><%=partner[0].name%></h3>
-        <p><%=partner[0].introduction%></p>
+        <h3><%=partner.name%></h3>
+        <p><%=partner.introduction%></p>
       </div>
     </div>
     <div class="p-courese ad-courses">
@@ -25,13 +26,13 @@
       <%courses.forEach(function(val){%>
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <a href="/course/view?id=10" target="_blank">
+          <a href="/course/view?id=<%=val.id%>" target="_blank">
             <span class="course-img">
               <img src="/resource/img/k/<%= val.img %>" alt="<%= val.name %>">
             </span>
             <em><%= val.name %></em>
           </a>
-          <p><%= val.source %>" • "<%= val.time %></p>
+          <p><%= val.source %> • <%= val.time %></p>
         </div>
       </div>
       <%})%>
