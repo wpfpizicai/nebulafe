@@ -55,6 +55,16 @@
           <p></p>
         </div>
       </div>
+       <div class="row">
+        <div class="col-sm-12 col-md-12 reffernce">
+          <h2>辅助资料</h2>
+          <p data-user-generated="data-user-generated"></p>
+          <% var cls = "btn-default"; var url = "javascript:void(0);"%>
+          <%if(userInfo){%> <% cls = "btn-info"; url = course.material %> <%}%>
+          <a class="btn <%=cls%>" href="<%-url%>" tagrget="_blank" id="learn_mater"><%=course.name%></a>
+          <p></p>
+        </div>
+      </div>
       <div class="row">
         <div class="col-sm-12 col-md-12">
           <h2>常见问题</h2>
@@ -68,7 +78,7 @@
           <div class="course-teacher">
           <%teachers.forEach(function(teacher){%>
             <div class="col-sm-6 col-md-4">
-               <a href="" class="teacher-pic"><img src="http://n-teacher.oss-cn-beijing.aliyuncs.com/cft/<%=teacher.img%>" width="80" height="114"></a>
+               <a href="#" class="teacher-pic"><img src="http://n-teacher.oss-cn-beijing.aliyuncs.com/cft/<%=teacher.img%>" width="80" height="114"></a>
                 <h3>
                   <a><%=teacher.name%></a>
                 </h3>

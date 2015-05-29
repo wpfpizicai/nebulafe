@@ -63,6 +63,21 @@
     </div>
   </div>
   <%- include ../footer.html %>
+  <script>
+  <% var r_len = resources.length%>
+  var res = [
+    <%resources.forEach(function(val,idx){%>
+      {
+        title:"<%=val.title%>",
+        artist:"<%=val.artist%>",
+        ogv: "<%-val.ogv%>",
+        webmv: "<%-val.webmv%>",
+        m4v : "<%-val.m4v%>",
+        poster : "<%-val.poster%>"
+      }<%if(idx != r_len - 1){%> , <%}%>
+    <%})%>
+  ]
+  </script>
   <script>seajs.use('js/course/video')</script>
 </body>
 </html>

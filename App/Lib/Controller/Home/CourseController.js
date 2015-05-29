@@ -78,14 +78,34 @@ module.exports = Controller("Home/BaseController", function(){
           return self.redirect("/course");
         }
         var course = Service.getCourseById({id : course_id});
+        var resources = Service.getResourcesByCourseId({course : course_id});
         self.assign({
           title : "课程视频",
           course : course,
           navLinks : navLinks,
           userInfo : self.userInfo,
+          resources : resources,
           section : 'course'
         })
         self.display();
+      }
+    },
+
+    materialAction : function(){
+      var self = this;
+      if(!self.userInfo){
+        return self.redirect("/")
+      }
+      if(self.isGet()){
+        var course_id = self.get('id');
+        if(!course_id){
+          return self.redirect("/course");
+        }
+        Service.getCourseById({id : course_id}).then(function(data){
+          if(data && data[0]){
+            return self.redirect(data[0].materialAction)
+          }
+        })
       }
     }
   };
