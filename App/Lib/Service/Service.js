@@ -50,7 +50,7 @@ var Service = Class(function(){
     /*Resource API*/
 
     getResourcesByCourseId : function(data){
-      return getRequst('resource/retrieve' , extend({_returntype : "detail"}, data));
+      return getRequst('resource/retrieve' , extend({_returntype : "detail" ,_orderby : "weight" , _ordertype:"int", _desc:"true"}, data));
     },
 
     /*Partner API*/
