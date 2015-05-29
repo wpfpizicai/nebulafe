@@ -50,11 +50,13 @@ module.exports = Controller("Home/BaseController", function(){
             var partner_id = course.partner;
             var partner = Service.getPartnerById({id : partner_id});
             var teachers = Service.getTeachersByCourseId({course : course_id});
+            var resource = Service.getResourcesByCourseId({course : course_id, _limit : 1, _start : 0});
             self.assign({
               title: "课程",
               course : course,
               partner : partner,
               navLinks : navLinks,
+              resource : resource,
               teachers : teachers,
               userInfo : self.userInfo,
               section : 'course'
