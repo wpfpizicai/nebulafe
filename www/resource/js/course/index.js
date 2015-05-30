@@ -73,7 +73,7 @@ define(function(require, exports, moudle) {
       if(data){
         var tpl = ['<%courses.forEach(function(val){%><div class="course-item">',
               '<div class="col-md-2 col-xs-3">',
-                '<img src="/resource/img/DataScientistsToolbox.jpg" width="120" height="68">',
+                '<img src="http://n-course.oss-cn-beijing.aliyuncs.com/pic/<%=val.small_img%>" width="120" height="68">',
               '</div>',
               '<div class="col-md-7 col-xs-6">',
                 '<div class="c-partner"><%= val.source%></div>',
