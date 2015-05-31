@@ -85,6 +85,5 @@ global.toQueryString = function(obj) {
 global.navLinks =  [
   { label: '首页',    key: 'home',    href: '/' },
   { label: '课程',    key: 'course',    href: '/course' },
-  { label: '合作机构',    key: 'partner',   href: '/partner' },
-  { label: '关于',    key: 'about',   href: '/about' }
+  { label: '合作机构',    key: 'partner',   href: '/partner' }
 ];

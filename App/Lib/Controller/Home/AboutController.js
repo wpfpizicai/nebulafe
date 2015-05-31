@@ -14,6 +14,17 @@ module.exports = Controller("Home/BaseController", function(){
         navLinks : navLinks
       })
       this.display();
+    },
+
+    joinusAction:function(){
+      var self = this;
+      this.assign({
+        section : 'about',
+        title : "加入我们",
+        userInfo:self.userInfo,
+        navLinks : navLinks
+      })
+      this.display();
     }
   };
 })
