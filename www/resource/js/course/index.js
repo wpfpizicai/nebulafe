@@ -82,7 +82,7 @@ define(function(require, exports, moudle) {
               '</div>',
               '<div class="col-xs-3 text-right">',
                 '<p>6月 1日, 2015<br>4 个星期</p>',
-                '<button class="btn btn-info">认证&nbsp;证书</button>',
+                '<a class="btn btn-info" href="/course/view?id=<%= val.id%>">进入学习</a>',
               '</div>',
             '</div><%})%>'].join("");
         $('#courses').html( _.template(tpl ,data))
