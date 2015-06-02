@@ -107,5 +107,5 @@ define(function(require, exports, moudle) {
   };
 
   var course = new Course()
-  alifexi.track("course_index_view");
+  alifenxi.track("course_index_view");
 })
