@@ -1,5 +1,5 @@
 /*
- * 课程模型
+ * Service for more Detail from java
  */
 
 var Service = Class(function(){

@@ -22,6 +22,18 @@
             <input type="text" name="nick" data-validate="nick" class="ipt ipt-nick" placeholder="请输入用户昵称" value="<%=userInfo.nickname%>">
             <p class="rlf-tip-wrap"></p>
           </div>
+          <div class="rlf-group">
+            <input type="text" name="realname" data-validate="nick" class="ipt ipt-nick ipt-realname" placeholder="请输入您的真实姓名" value="<%=userInfo.realname%>">
+            <p class="rlf-tip-wrap"></p>
+          </div>
+          <div class="rlf-group">
+            <input type="text" name="mobile" data-validate="nick" class="ipt ipt-nick ipt-mobile" placeholder="请输入您的手机号" value="<%=userInfo.mobile%>">
+            <p class="rlf-tip-wrap"></p>
+          </div>
+          <div class="rlf-group">
+            <input type="text" name="idcard" data-validate="nick" class="ipt ipt-nick ipt-idcard" placeholder="请输入您的身份证号" value="<%=userInfo.idcard%>">
+            <p class="rlf-tip-wrap"></p>
+          </div>
           <input type="hidden" value="<%=userInfo.id%>" name="id" class="ipt-id">
           <div class=" form-control-verify">
             <input type="text" name="verify" maxlength="4" class="ipt" placeholder="请输入验证码">

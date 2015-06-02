@@ -15,6 +15,9 @@ define(function(require, exports, moudle) {
 
   $('#js-forgot-submit').on('click',function(e){
     var new_nickname = $.trim($('#js-forgot-form .ipt-nick').val());
+    var realname =  $.trim($('#js-forgot-form .ipt-realname').val());
+    var idcard = $.trim($('#js-forgot-form .ipt-idcard').val());
+    var mobile = $.trim($('#js-forgot-form .ipt-mobile').val());
     if(!new_nickname){
       forgotMsg('请输入用户名！');
       return;
@@ -27,6 +30,9 @@ define(function(require, exports, moudle) {
       url:"/user/update",
       data:{
           nickname : new_nickname,
+          realname : realname,
+          idcard : idcard,
+          mobile : mobile,
           verifycode: $('.form-control-verify input').val(),
           id : id
       },
