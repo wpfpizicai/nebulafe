@@ -8,7 +8,7 @@ module.exports = Controller("Home/BaseController", function(){
   return {
     indexAction: function(){
       var self = this;
-      Service.getAllCourses( _desc:true ,_ordertype : 'int').then(function(data){
+      Service.getAllCourses({ _desc:true ,_ordertype : 'int'}).then(function(data){
         self.assign({
           courses : data,
           section : 'course',
