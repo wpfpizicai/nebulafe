@@ -7,7 +7,7 @@ module.exports = {
   db_port: '', // 端口
   db_name: 'nodejs', // 数据库名
   db_user: 'nodejs', // 用户名
-  db_pwd: 'Wpf4284286', // 密码
+  db_pwd: '', // 密码
   db_prefix: 'think_', // 数据库表前缀
   app_group_list: ['Home', 'Admin'], //分组列表
   show_exec_time: true,

@@ -95,7 +95,6 @@ define(function(require, exports, moudle) {
 
   var m={
     signin:function(){
-      alifenxi.track("login_show");
       var tpl=getTpl("signin");
       return function(){
         var m=$("#signin");
@@ -193,7 +192,6 @@ define(function(require, exports, moudle) {
       }
     }(),
     signup:function(){
-      alifenxi.track("signin_show");
       var tpl=getTpl("signup");
       return function(){
         var m=$("#signup");
@@ -355,9 +353,11 @@ define(function(require, exports, moudle) {
       d[1]&&m[d[1]]();
     });
     $('#signin_btn').on('click',function(e){
+      alifenxi.track("login_show");
       m.signin();
     })
     $('#signup_btn').on('click',function(e){
+      alifenxi.track("signin_show");
       m.signup();
     })
   });
