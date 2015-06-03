@@ -30,7 +30,7 @@ module.exports = Controller("Home/BaseController", function(){
         if(!partner_id){
           return self.redirect("/partner")
         }
-        var courses = Service.getCoursesByPartnerId({partner : partner_id , _desc:true ,_ordertype : 'int'});
+        var courses = Service.getCourseOrderByWeight({partner : partner_id});
         var partner = Service.getPartnerById({id : partner_id});
         self.assign({
           section : 'partner',
