@@ -94,8 +94,8 @@ define(function(require, exports, moudle) {
       $('#course_tags').on('click',function(e){
         if($(e.target) && $(e.target).attr("data_id")){
           var tag = $(e.target).attr("data_id");
-          if(tag == "all"){
-            me.uncheckList();
+          if(tag == "all" && $(e.target).attr('checked') != false){
+            //me.uncheckList();
             window.location.reload();
           }else{
             me.uncheckAllInput();
