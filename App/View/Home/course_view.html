@@ -62,7 +62,7 @@
           <p data-user-generated="data-user-generated"></p>
           <% var cls = "btn-default"; var url = "javascript:void(0);"%>
           <%if(userInfo){%> <% cls = "btn-info"; url = course.material %> <%}%>
-          <a class="btn <%=cls%>" href="<%-url%>" tagrget="_blank" id="learn_mater"><%=course.name%></a>
+          <%if(!course.material){%> <button class="btn btn-default">暂无</button> <% }else{ %> <a class="btn <%=cls%>" href="<%-url%>" tagrget="_blank" id="learn_mater"><%=course.name%></a><%}%>
           <p></p>
         </div>
       </div>
@@ -75,18 +75,18 @@
       <hr class="c-course-divider">
       <div class="row">
         <div class="col-sm-12 col-md-12">
-          <h2>教授</h2>
-          <div class="course-teacher">
-          <%teachers.forEach(function(teacher){%>
-            <div class="col-sm-6 col-md-4">
-               <a href="#" class="teacher-pic"><img src="http://n-teacher.oss-cn-beijing.aliyuncs.com/cft/<%=teacher.img%>" width="80" height="114"></a>
-                <h3>
-                  <a><%=teacher.name%></a>
-                </h3>
-                <p> <%=teacher.career%></p>
-                <br class="clear">
-               <div class="discrip autowrap"><%=teacher.description%></div>
-            </div>
+            <h2>教授</h2>
+            <div class="course-teacher">
+            <%teachers.forEach(function(teacher){%>
+              <div class="col-sm-6 col-md-4">
+                 <a href="#" class="teacher-pic"><img src="http://n-teacher.oss-cn-beijing.aliyuncs.com/cft/<%=teacher.img%>" width="80" height="114"></a>
+                  <h3>
+                    <a><%=teacher.name%></a>
+                  </h3>
+                  <p> <%=teacher.career%></p>
+                  <br class="clear">
+                 <div class="discrip autowrap"><%=teacher.description%></div>
+              </div>
             <%})%>
           </div>
         </div>
