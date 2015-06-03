@@ -82,7 +82,7 @@ define(function(require, exports, moudle) {
               '<div class="col-md-7 col-xs-6">',
                 '<div class="c-partner"><%= val.source%></div>',
                 '<div class="c-title"><a href="/course/view?id=<%= val.id%>"><%=val.name%></a></div>',
-                '<div class="c-teacher">授课教师 <%=val.teacher%></div>',
+                '<div class="c-teacher">授课教师 <% if(val.teacher){%><%=val.teacher%><%}%></div>',
               '</div>',
               '<div class="col-xs-3 text-right">',
                 '<p>6月 1日, 2015<br>4 个星期</p>',
