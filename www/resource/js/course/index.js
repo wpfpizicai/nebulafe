@@ -23,6 +23,10 @@ define(function(require, exports, moudle) {
       var me = this;
       $('input','#course_tags').attr('checked', false);
     },
+    
+    checkAllInput : function(){
+      $('#categories_all').attr('checked', true);
+    },
 
     getCourseByTag : function(){
       var me = this;
@@ -95,7 +99,8 @@ define(function(require, exports, moudle) {
         if($(e.target) && $(e.target).attr("data_id")){
           var tag = $(e.target).attr("data_id");
           if(tag == "all" && $(e.target).attr('checked') != false){
-            //me.uncheckList();
+            me.uncheckList();
+            me.checkAllInput();
             window.location.reload();
           }else{
             me.uncheckAllInput();
