@@ -34,6 +34,10 @@ var Service = Class(function(){
     getCourseById : function(data){
       return getRequst('course/retrieve',  extend({_returntype : "detail"}, data));
     },
+    
+    getCourseOrderByWeight : function(data){
+      return getRequst('course/retrieve',  extend({_returntype : "detail", _desc:true ,_ordertype : 'int' , _orderby : 'weight'}, data));
+    },
 
     getCoursesByTag : function(data){
       return getRequst('course/retrieve', extend({_returntype : "detail"}, data));
