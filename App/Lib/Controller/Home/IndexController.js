@@ -17,7 +17,7 @@ module.exports = Controller("Home/BaseController", function(){
         if (!isEmpty(value)) {
           userInfo = value;
         }
-        var courses = Service.getCourseOrderByWeight({_limit:6,_page:0 });
+        var courses = Service.getCourseOrderByWeight({_limit:6,_page:1 });
         self.assign(extend({
           courses:courses,
           title : "首页",
