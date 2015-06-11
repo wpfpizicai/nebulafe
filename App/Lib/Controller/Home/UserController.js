@@ -145,7 +145,7 @@ module.exports = Controller("Home/BaseController", function(){
             Service.sendEmail({
               email: data.email,
               subject : "找回密码",
-              message : "http://localhost:8361/user/reset/?verify=" + encrypt(data.email)
+              message : "http://www.nebulafe.com/user/reset/?verify=" + encrypt(data.email)
             })
             return self.success();
           }else{

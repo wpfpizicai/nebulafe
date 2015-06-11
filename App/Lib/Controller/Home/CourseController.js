@@ -8,7 +8,7 @@ module.exports = Controller("Home/BaseController", function(){
   return {
     indexAction: function(){
       var self = this;
-      Service.getAllCourses().then(function(data){
+      Service.getCourseOrderByWeight().then(function(data){
         self.assign({
           courses : data,
           section : 'course',
@@ -50,7 +50,7 @@ module.exports = Controller("Home/BaseController", function(){
             var partner_id = course.partner;
             var partner = Service.getPartnerById({id : partner_id});
             var teachers = Service.getTeachersByCourseId({course : course_id});
-            var resource = Service.getResourcesByCourseId({course : course_id, _limit : 1, _start : 0});
+            var resource = Service.getResourcesByCourseId({course : course_id, _limit : 1, _page : 1});
             self.assign({
               title: "课程",
               course : course,

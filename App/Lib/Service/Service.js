@@ -34,6 +34,10 @@ var Service = Class(function(){
     getCourseById : function(data){
       return getRequst('course/retrieve',  extend({_returntype : "detail"}, data));
     },
+    
+    getCourseOrderByWeight : function(data){
+      return getRequst('course/retrieve',  extend({_returntype : "detail", _desc:true ,_ordertype : 'int' , _orderby : 'weight'}, data));
+    },
 
     getCoursesByTag : function(data){
       return getRequst('course/retrieve', extend({_returntype : "detail"}, data));
@@ -50,7 +54,7 @@ var Service = Class(function(){
     /*Resource API*/
 
     getResourcesByCourseId : function(data){
-      return getRequst('resource/retrieve' , extend({_returntype : "detail" ,_orderby : "weight" , _ordertype:"int", _desc:"true"}, data));
+      return getRequst('resource/retrieve' , extend({_returntype : "detail" ,_orderby : "weight" , _ordertype:"int", _desc: false}, data));
     },
 
     /*Partner API*/

@@ -17,7 +17,7 @@ module.exports = Controller("Home/BaseController", function(){
         if (!isEmpty(value)) {
           userInfo = value;
         }
-        var courses = Service.getAllCourses({_limit:6,_start:0 , _desc:true ,_ordertype : 'int'});
+        var courses = Service.getCourseOrderByWeight({_limit:6,_page:1 });
         self.assign(extend({
           courses:courses,
           title : "首页",

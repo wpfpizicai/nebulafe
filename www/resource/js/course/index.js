@@ -23,6 +23,10 @@ define(function(require, exports, moudle) {
       var me = this;
       $('input','#course_tags').attr('checked', false);
     },
+    
+    checkAllInput : function(){
+      $('#categories_all').attr('checked', true);
+    },
 
     getCourseByTag : function(){
       var me = this;
@@ -73,12 +77,12 @@ define(function(require, exports, moudle) {
       if(data){
         var tpl = ['<%courses.forEach(function(val){%><div class="course-item">',
               '<div class="col-md-2 col-xs-3">',
-                '<img src="http://n-course.oss-cn-beijing.aliyuncs.com/pic/<%=val.small_img%>" width="120" height="68">',
+                '<a href="/course/view?id=<%= val.id%>"><img src="http://n-course.oss-cn-beijing.aliyuncs.com/pic/<%=val.small_img%>" width="120" height="68"></a>',
               '</div>',
               '<div class="col-md-7 col-xs-6">',
                 '<div class="c-partner"><%= val.source%></div>',
                 '<div class="c-title"><a href="/course/view?id=<%= val.id%>"><%=val.name%></a></div>',
-                '<div class="c-teacher">授课教师 <%=val.teacher%></div>',
+                '<div class="c-teacher">授课教师 <% if(val.teacher){%><%=val.teacher%><%}%></div>',
               '</div>',
               '<div class="col-xs-3 text-right">',
                 '<p>6月 1日, 2015<br>4 个星期</p>',
@@ -94,8 +98,9 @@ define(function(require, exports, moudle) {
       $('#course_tags').on('click',function(e){
         if($(e.target) && $(e.target).attr("data_id")){
           var tag = $(e.target).attr("data_id");
-          if(tag == "all"){
+          if(tag == "all" && $(e.target).attr('checked') != false){
             me.uncheckList();
+            me.checkAllInput();
             window.location.reload();
           }else{
             me.uncheckAllInput();
