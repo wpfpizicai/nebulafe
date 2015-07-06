@@ -1,5 +1,7 @@
 define(function(require, exports, moudle) {
-  alifenxi.track("course_video_view");
+  alifenxi.track("course_video_view" ,{
+    "course_name" : $('#course_name').html()
+  });
   require("js/widget/jquery.jplayer.min.js");
   require("js/widget/jplayer.playlist.min.js");
   $(function(){
