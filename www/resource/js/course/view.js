@@ -1,5 +1,7 @@
 define(function(require, exports, moudle) {
-  alifenxi.track("course_view_view");
+  alifenxi.track("course_view_view",{
+    "course_name" : $('#course_name').html()
+  });
   var login = require('../index.js');
   $(function(){
     if($('#signin_user')[0]){
